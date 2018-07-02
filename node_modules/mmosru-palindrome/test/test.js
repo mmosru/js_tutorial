@@ -25,6 +25,12 @@ describe("Phrase", function() {
       assert(punctuatedPalindrome.palindrome());
     });
     
+    it("should return false for an empty string", function() {
+      let emptyStr = new Phrase("");
+      assert(!emptyStr.palindrome());
+    });
+    
+    
     
   });
   
