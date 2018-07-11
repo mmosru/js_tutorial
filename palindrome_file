@@ -1,0 +1,20 @@
+#!/home/ec2-user/.nvm/versions/node/v6.14.1/bin/node
+
+let fs = require("fs");
+let Phrase = require("mmosru-palindrome");
+
+let text = fs.readFileSync("phrases.txt", "utf8");
+let outputStr = '';
+
+text.split("\n").forEach(function(line) {
+  let phrase = new Phrase(line);
+  if (phrase.palindrome()) {
+    console.log("palindrome detected:", line);
+    outputStr += line + '\n';
+  }
+});
+
+fs.appendFile('output.txt', outputStr, (err) => {
+    if (err) throw err;
+    console.log('write done');
+});
